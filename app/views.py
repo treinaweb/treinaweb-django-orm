@@ -2,15 +2,22 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from .models import Cliente
+from .forms import ClienteForm, EnderecoForm
 
 # Create your views here.
 
 
 class ClienteCreateView(CreateView):
     model = Cliente
-    fields = "__all__"
+    form_class = ClienteForm
     template_name = "form_cliente.html"
     success_url = "lista_clientes"
+
+    def get_context_data(self, **kwargs):
+        context = super(ClienteCreateView, self).get_context_data(**kwargs)
+        context["form"] = ClienteForm()
+        context["endereco_form"] = EnderecoForm()
+        return context
 
 
 class ClienteListView(ListView):
