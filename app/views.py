@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.shortcuts import render, HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 from .models import Cliente
 from .forms import ClienteForm, EnderecoForm
@@ -18,6 +18,16 @@ class ClienteCreateView(CreateView):
         context["form"] = ClienteForm()
         context["endereco_form"] = EnderecoForm()
         return context
+
+    def post(self, request, *args, **kwargs):
+        cliente_form = ClienteForm(data=request.POST)
+        endereco_form = EnderecoForm(data=request.POST)
+        if cliente_form.is_valid() and endereco_form.is_valid():
+            endereco = endereco_form.save()
+            cliente = cliente_form.save(commit=False)
+            cliente.endereco = endereco
+            cliente.save()
+            return HttpResponseRedirect(reverse("lista_clientes"))
 
 
 class ClienteListView(ListView):
