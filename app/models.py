@@ -43,3 +43,9 @@ class Cliente(models.Model):
     email = models.EmailField(null=False, blank=False)
     profissao = models.CharField(max_length=100, null=False, blank=False)
     endereco = models.OneToOneField(to=Endereco, on_delete=models.SET_NULL, null=True)
+
+class Dependente(models.Model):
+    nome = models.CharField(max_length=100, null=False, blank=False)
+    telefone = models.CharField(max_length=12, null=False, blank=False)
+    titular = models.ForeignKey(to=Cliente, on_delete=models.CASCADE, null=False, blank=False)
+
