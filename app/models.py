@@ -44,6 +44,9 @@ class Cliente(models.Model):
     profissao = models.CharField(max_length=100, null=False, blank=False)
     endereco = models.OneToOneField(to=Endereco, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return f"{self.nome} - {self.email}"
+
 class Dependente(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
     telefone = models.CharField(max_length=12, null=False, blank=False)
