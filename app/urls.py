@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import (
+from .views.cliente_views import (
     ClienteCreateView, ClienteListView, ClienteUpdateView, 
     ClienteDetailView, ClienteDeleteView
 )
