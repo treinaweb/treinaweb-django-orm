@@ -7,7 +7,7 @@ from .views.dependente_views import (
     DependenteCreateView, DependenteListView
 )
 from .views.atendente_views import (
-    AtendenteCreateView
+    AtendenteCreateView, AtendenteListView
 )
 
 urlpatterns = [
@@ -19,4 +19,6 @@ urlpatterns = [
     path("form_dependente", DependenteCreateView.as_view(), name="cadastrar_dependente"),
     path("lista_dependentes", DependenteListView.as_view(), name="lista_dependentes"),
     path("form_atendente", AtendenteCreateView.as_view(), name="cadastrar_atendente"),
+    path("lista_atendentes", AtendenteListView.as_view(), name="lista_atendentes"),
+
 ]
