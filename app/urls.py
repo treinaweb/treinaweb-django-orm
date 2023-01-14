@@ -6,6 +6,9 @@ from .views.cliente_views import (
 from .views.dependente_views import (
     DependenteCreateView, DependenteListView
 )
+from .views.atendente_views import (
+    AtendenteCreateView
+)
 
 urlpatterns = [
     path("form_cliente", ClienteCreateView.as_view(), name="cadastrar_cliente"),
@@ -15,4 +18,5 @@ urlpatterns = [
     path("remover_cliente/<int:pk>", ClienteDeleteView.as_view(), name="remover_cliente"),
     path("form_dependente", DependenteCreateView.as_view(), name="cadastrar_dependente"),
     path("lista_dependentes", DependenteListView.as_view(), name="lista_dependentes"),
+    path("form_atendente", AtendenteCreateView.as_view(), name="cadastrar_atendente"),
 ]
