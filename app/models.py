@@ -57,3 +57,6 @@ class Atendente(models.Model):
     email = models.EmailField(null=False, blank=False)
     clientes = models.ManyToManyField(to=Cliente, related_name="atendente_cliente")
 
+    class Meta:
+        db_table = "app_funcionario"
+
