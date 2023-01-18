@@ -33,6 +33,7 @@ class ClienteCreateView(CreateView):
 class ClienteListView(ListView):
     model = Cliente
     template_name = "clientes/lista_clientes.html"
+    queryset = Cliente.objects.all().order_by('-data_nascimento')
 
 # Adicionar um comentário
 class ClienteDetailView(DetailView):
